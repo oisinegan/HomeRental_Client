@@ -106,6 +106,8 @@ function ShowAll() {
         fetch("/getAllHomes")
           .then((res) => res.json())
           .then((dataHouse) => {
+            console.log("Recived");
+            console.log(dataHouse);
             setDataHouse(dataHouse);
             setHouseNo(": " + Object.keys(dataHouse).length);
           });
