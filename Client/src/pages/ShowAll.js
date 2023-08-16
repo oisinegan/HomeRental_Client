@@ -103,7 +103,7 @@ function ShowAll() {
     if (querySetting === "search") {
       if (!searchQuery) {
         //GET ALL HOMES
-        fetch("/getAllHomes")
+        fetch("https://homerentalserver.onrender.com/getAllHomes")
           .then((res) => res.json())
           .then((dataHouse) => {
             console.log("Recived");
