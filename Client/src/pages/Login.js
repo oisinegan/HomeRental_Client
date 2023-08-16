@@ -30,7 +30,7 @@ function Login() {
     const result = await response.json();
     if (result.user) {
       localStorage.setItem("token", result.user);
-      window.location.href = "https://homerentalserver.onrender.com";
+      window.location.href = "https://home-rental-client.vercel.app";
     } else {
       alert("ERROR: wrong user or password");
     }
