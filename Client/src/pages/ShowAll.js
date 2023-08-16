@@ -50,11 +50,15 @@ function ShowAll() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (searchBar === "") {
-      window.location.href = `/Rentals?key=${encodeURIComponent("search")}`;
+      window.location.href = `https://home-rental-client.vercel.app/Rentals?key=${encodeURIComponent(
+        "search"
+      )}`;
     } else if (searchBar === null) {
-      window.location.href = `/Rentals?key=${encodeURIComponent("search")}`;
+      window.location.href = `https://home-rental-client.vercel.app/Rentals?key=${encodeURIComponent(
+        "search"
+      )}`;
     } else {
-      window.location.href = `/Rentals?key=${encodeURIComponent(
+      window.location.href = `https://home-rental-client.vercel.app/Rentals?key=${encodeURIComponent(
         "search"
       )}&query=${encodeURIComponent(searchBar)}`;
     }
@@ -72,11 +76,11 @@ function ShowAll() {
     e.preventDefault();
 
     if (filterQuery === "") {
-      window.location.href = `/Rentals`;
+      window.location.href = `https://home-rental-client.vercel.app/Rentals`;
     } else if (filterQuery === null) {
-      window.location.href = `/Rentals`;
+      window.location.href = `https://home-rental-client.vercel.app/Rentals`;
     } else {
-      window.location.href = `/Rentals?key=${encodeURIComponent(
+      window.location.href = `https://home-rental-client.vercel.app/Rentals?key=${encodeURIComponent(
         "filter"
       )}&Type=${encodeURIComponent(filterQuery.Type)}&Town=${encodeURIComponent(
         filterQuery.City
@@ -113,13 +117,16 @@ function ShowAll() {
           });
       } else {
         //GET HOMES FROM SEARCH QUERY
-        const response = await fetch("/searchHomes", {
-          method: "post",
-          body: JSON.stringify({ search: searchQuery }),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        const response = await fetch(
+          "https://homerentalserver.onrender.com/searchHomes",
+          {
+            method: "post",
+            body: JSON.stringify({ search: searchQuery }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
 
         const result = await response.json();
         setDataHouse(result);
@@ -127,20 +134,23 @@ function ShowAll() {
         setHouseNo(" for " + searchQuery + ": " + Object.keys(result).length);
       }
     } else if (querySetting === "filter") {
-      const response = await fetch("/filterHomes", {
-        method: "post",
-        body: JSON.stringify(filterQuery),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        "https://homerentalserver.onrender.com/filterHomes",
+        {
+          method: "post",
+          body: JSON.stringify(filterQuery),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       const result = await response.json();
       setDataHouse(result);
       setHouseNo(": " + Object.keys(result).length);
     } else {
       //GET ALL HOMES
-      fetch("/getAllHomes")
+      fetch("https://homerentalserver.onrender.com/getAllHomes")
         .then((res) => res.json())
         .then((dataHouse) => {
           setDataHouse(dataHouse);
@@ -150,7 +160,9 @@ function ShowAll() {
   };
 
   const redirectToProperty = (e, key) => {
-    window.location.href = `/Property?id=${encodeURIComponent(key)}`;
+    window.location.href = `https://home-rental-client.vercel.app/Property?id=${encodeURIComponent(
+      key
+    )}`;
   };
 
   useEffect(() => {

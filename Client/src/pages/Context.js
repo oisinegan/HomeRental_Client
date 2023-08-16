@@ -4,7 +4,7 @@ export const myContext = createContext();
 export default function Context({ children }) {
   const [user, setUser] = useState([{}]);
   useEffect(() => {
-    fetch("/getUser")
+    fetch("https://homerentalserver.onrender.com/getUser")
       .then((res) => res.json())
       .then((user) => {
         setUser(user);

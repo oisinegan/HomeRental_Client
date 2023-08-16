@@ -6,7 +6,7 @@ function Filter() {
   const [userInfo, setUserInfo] = useState();
 
   useEffect(() => {
-    fetch("/getUser")
+    fetch("https://homerentalserver.onrender.com/getUser")
       .then((res) => res.json())
       .then((userInfo) => {
         setUserInfo(userInfo);
@@ -15,18 +15,21 @@ function Filter() {
 
   const goBack = (e) => {
     e.preventDefault();
-    window.location.href = "http://localhost:3000";
+    window.location.href = "https://home-rental-client.vercel.app";
   };
 
   const logout = async (e) => {
     e.preventDefault();
-    const response = await fetch("/logout", {
-      method: "post",
-      body: JSON.stringify(),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      "https://homerentalserver.onrender.com/logout",
+      {
+        method: "post",
+        body: JSON.stringify(),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     const result = await response.json();
     if (result === "LOGGED OUT") {
@@ -35,17 +38,20 @@ function Filter() {
   };
 
   const deleteAcc = async () => {
-    const response = await fetch("/deleteAccount", {
-      method: "post",
-      body: JSON.stringify({ id: userInfo.id }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      "https://homerentalserver.onrender.com/deleteAccount",
+      {
+        method: "post",
+        body: JSON.stringify({ id: userInfo.id }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     const result = await response.json();
     if (result === "SUCCESS") {
-      window.location.href = "http://localhost:3000";
+      window.location.href = "https://home-rental-client.vercel.app";
     }
   };
   return (

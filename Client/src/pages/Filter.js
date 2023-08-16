@@ -26,13 +26,16 @@ function Filter() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch("/filterHomes", {
-      method: "post",
-      body: JSON.stringify(filterRes),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      "https://homerentalserver.onrender.com/filterHomes",
+      {
+        method: "post",
+        body: JSON.stringify(filterRes),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     const result = await response.json();
 

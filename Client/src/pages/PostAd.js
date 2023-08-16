@@ -81,18 +81,21 @@ function PostAd() {
   };
 
   const sendForm = async () => {
-    const response = await fetch("/PostAd", {
-      method: "post",
-      body: JSON.stringify(formRes),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      "https://homerentalserver.onrender.com/PostAd",
+      {
+        method: "post",
+        body: JSON.stringify(formRes),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const result = await response.json();
 
     setIsSubmitting(false);
     if (result === "RECEIVED") {
-      window.location.href = "http://localhost:3000/MyRentals";
+      window.location.href = "https://home-rental-client.vercel.app/MyRentals";
     } else {
       alert("ERROR POSTING AD PLEASE TRY AGAIN");
     }
@@ -143,7 +146,7 @@ function PostAd() {
   useEffect(() => {}, [uploadedFiles]);
 
   useEffect(() => {
-    fetch("/getUser")
+    fetch("https://homerentalserver.onrender.com/getUser")
       .then((res) => res.json())
       .then((userInfo) => {
         setFormRes((prevFormRes) => ({

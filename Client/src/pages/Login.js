@@ -16,17 +16,20 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch("/Login", {
-      method: "post",
-      body: JSON.stringify(info),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      "https://homerentalserver.onrender.com/Login",
+      {
+        method: "post",
+        body: JSON.stringify(info),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     const result = await response.json();
     if (result === "SUCESS") {
-      window.location.href = "http://localhost:3000";
+      window.location.href = "https://home-rental-client.vercel.app";
     } else {
       alert("ERROR: wrong user or pass");
     }

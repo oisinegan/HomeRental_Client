@@ -6,7 +6,7 @@ function MyRentals() {
   const [dataHouse, setDataHouse] = useState({});
   const [userInfo, setUserInfo] = useState();
   useEffect(() => {
-    fetch("/getUser")
+    fetch("https://homerentalserver.onrender.com/getUser")
       .then((res) => res.json())
       .then((userInfo) => {
         setUserInfo(userInfo);
@@ -23,31 +23,37 @@ function MyRentals() {
   useEffect(() => {}, [dataHouse]);
 
   const getRentals = async (id) => {
-    const response = await fetch("/getRentals", {
-      method: "post",
-      body: JSON.stringify({ id: id }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      "https://homerentalserver.onrender.com/getRentals",
+      {
+        method: "post",
+        body: JSON.stringify({ id: id }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     const result = await response.json();
     setDataHouse(result);
   };
 
   const deleteRental = async (id) => {
-    const response = await fetch("/deleteProperty", {
-      method: "post",
-      body: JSON.stringify({ id: id }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      "https://homerentalserver.onrender.com/deleteProperty",
+      {
+        method: "post",
+        body: JSON.stringify({ id: id }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     const result = await response.json();
 
     if (result === "SUCCESS") {
-      window.location.href = "http://localhost:3000/MyRentals";
+      window.location.href = "https://home-rental-client.vercel.app/MyRentals";
     } else {
       alert("ERROR");
     }

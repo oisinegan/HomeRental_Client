@@ -21,13 +21,16 @@ function Property() {
     msgDetails.propCounty = property[id].County;
     msgDetails.propId = id;
     e.preventDefault();
-    const response = await fetch("/EmailUsers", {
-      method: "post",
-      body: JSON.stringify(msgDetails),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      "https://homerentalserver.onrender.com/EmailUsers",
+      {
+        method: "post",
+        body: JSON.stringify(msgDetails),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     const result = await response.json();
     console.log(result);
@@ -41,13 +44,16 @@ function Property() {
 
   useEffect(() => {
     const getPropertyInfo = async () => {
-      const response = await fetch("/getProperty", {
-        method: "post",
-        body: JSON.stringify({ id: id }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        "https://homerentalserver.onrender.com/getProperty",
+        {
+          method: "post",
+          body: JSON.stringify({ id: id }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       const result = await response.json();
 

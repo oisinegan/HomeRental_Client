@@ -51,7 +51,7 @@ function LandingPage() {
   };
 
   const searchPopArea = (e) => {
-    window.location.href = `/Rentals?key=${encodeURIComponent(
+    window.location.href = `https://home-rental-client.vercel.app/Rentals?key=${encodeURIComponent(
       "search"
     )}&query=${encodeURIComponent(e.target.value)}`;
   };
@@ -67,11 +67,15 @@ function LandingPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (search === "") {
-      window.location.href = `/Rentals?key=${encodeURIComponent("search")}`;
+      window.location.href = `https://home-rental-client.vercel.app/Rentals?key=${encodeURIComponent(
+        "search"
+      )}`;
     } else if (search === null) {
-      window.location.href = `/Rentals?key=${encodeURIComponent("search")}`;
+      window.location.href = `https://home-rental-client.vercel.app/Rentals?key=${encodeURIComponent(
+        "search"
+      )}`;
     } else {
-      window.location.href = `/Rentals?key=${encodeURIComponent(
+      window.location.href = `https://home-rental-client.vercel.app/Rentals?key=${encodeURIComponent(
         "search"
       )}&query=${encodeURIComponent(search)}`;
     }
@@ -88,11 +92,11 @@ function LandingPage() {
     e.preventDefault();
 
     if (filterRes === "") {
-      window.location.href = `/Rentals`;
+      window.location.href = `https://home-rental-client.vercel.app/Rentals`;
     } else if (filterRes === null) {
-      window.location.href = `/Rentals`;
+      window.location.href = `https://home-rental-client.vercel.app/Rentals`;
     } else {
-      window.location.href = `/Rentals?key=${encodeURIComponent(
+      window.location.href = `https://home-rental-client.vercel.app/Rentals?key=${encodeURIComponent(
         "filter"
       )}&Type=${encodeURIComponent(filterRes.Type)}&Town=${encodeURIComponent(
         filterRes.City

@@ -15,13 +15,16 @@ function Search() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch("/searchHomes", {
-      method: "post",
-      body: JSON.stringify(search),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      "https://homerentalserver.onrender.com/searchHomes",
+      {
+        method: "post",
+        body: JSON.stringify(search),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     const result = await response.json();
     setSearchRes(result);

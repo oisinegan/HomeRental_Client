@@ -16,17 +16,20 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch("/Register", {
-      method: "post",
-      body: JSON.stringify(info),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      "https://homerentalserver.onrender.com/Register",
+      {
+        method: "post",
+        body: JSON.stringify(info),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     const result = await response.json();
     if (result) {
-      window.location.href = "http://localhost:3000/Login";
+      window.location.href = "https://home-rental-client.vercel.app/Login";
     } else {
       alert("ERROR: USER ALREADY EXISTS");
     }
