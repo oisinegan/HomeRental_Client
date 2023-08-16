@@ -24,7 +24,7 @@ function App() {
         <Route path="Search" element={<Search />} />
         <Route path="Property" element={<Property />} />
 
-        {context === "undefined" ? (
+        {context === "null" ? (
           <>
             <Route path="Login" element={<Login />} />
             <Route path="Register" element={<Register />} />

@@ -5,19 +5,16 @@ import { useContext } from "react";
 function Nav() {
   const context = useContext(myContext);
 
-  const logout = async () => {
-    const response = await fetch("/logout", {
-      method: "post",
-      body: JSON.stringify(),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    const result = await response.json();
-    if (result === "LOGGED OUT") {
-      window.location.href = "http://localhost:3000";
-    }
+  const logout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "https://home-rental-client.vercel.app";
+    // const response = await fetch("/logout", {
+    //   method: "post",
+    //   body: JSON.stringify(),
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    // });
   };
 
   return (
@@ -26,7 +23,7 @@ function Nav() {
         <p className="text-2xl hover:text-cyan-500 transition-colors cursor-pointer">
           <Link to="/">HomeRental.</Link>
         </p>
-        {context === "undefined" ? (
+        {context === "null" ? (
           <ul className="flex items-center gap-5">
             <li className="hover:text-cyan-500 transition-colors">
               <Link to="/Rentals">Rentals</Link>
