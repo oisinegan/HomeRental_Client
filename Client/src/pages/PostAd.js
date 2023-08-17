@@ -65,11 +65,10 @@ function PostAd() {
       "-" +
       year;
 
-    const folder = formRes.idLandlord + "_" + fullDate;
+    const folder = user.id + "_" + fullDate;
     formRes.Folder = folder;
     formRes.DatePosted = date + "-" + month + "-" + year;
-    console.log(user);
-    console.log(user.id);
+
     formRes.idLandlord = user.id;
 
     const fbUrls = [];
