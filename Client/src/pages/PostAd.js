@@ -5,6 +5,7 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import storage from "../config/firebase";
 
 function PostAd() {
+  const [userInfo, setUserInfo] = useState();
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [uploadedFilesImgURl, setUploadedFilesImgUrl] = useState([]);
   const [fileLimit, setFileLimit] = useState(false);
