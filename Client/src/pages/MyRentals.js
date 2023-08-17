@@ -6,11 +6,12 @@ function MyRentals() {
   const [dataHouse, setDataHouse] = useState({});
   const [userInfo, setUserInfo] = useState();
   useEffect(() => {
-    fetch("https://homerentalserver.onrender.com/getUser")
-      .then((res) => res.json())
-      .then((userInfo) => {
-        setUserInfo(userInfo);
-      });
+    setUserInfo(localStorage.getItem("token"));
+    // fetch("https://homerentalserver.onrender.com/getUser")
+    //   .then((res) => res.json())
+    //   .then((userInfo) => {
+    //     setUserInfo(userInfo);
+    //   });
   }, []);
 
   useEffect(() => {

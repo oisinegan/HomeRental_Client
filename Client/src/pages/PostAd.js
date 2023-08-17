@@ -146,14 +146,11 @@ function PostAd() {
   useEffect(() => {}, [uploadedFiles]);
 
   useEffect(() => {
-    fetch("https://homerentalserver.onrender.com/getUser")
-      .then((res) => res.json())
-      .then((userInfo) => {
-        setFormRes((prevFormRes) => ({
-          ...prevFormRes,
-          idLandlord: userInfo.id,
-        }));
-      });
+    setUserInfo(localStorage.getItem("token"));
+    setFormRes((prevFormRes) => ({
+      ...prevFormRes,
+      idLandlord: userInfo.id,
+    }));
   }, []);
 
   return (
