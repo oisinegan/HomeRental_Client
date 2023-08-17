@@ -1,10 +1,12 @@
 import Nav from "../components/nav";
 import Footer from "../components/footer";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import storage from "../config/firebase";
+import { myContext } from "../pages/Context";
 
 function PostAd() {
+  const user = useContext(myContext);
   const [userInfo, setUserInfo] = useState();
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [uploadedFilesImgURl, setUploadedFilesImgUrl] = useState([]);
@@ -66,6 +68,8 @@ function PostAd() {
     const folder = formRes.idLandlord + "_" + fullDate;
     formRes.Folder = folder;
     formRes.DatePosted = date + "-" + month + "-" + year;
+
+    formRes.idLandlord = user.id;
 
     const fbUrls = [];
     const uploadPromises = uploadedFiles.map(async (img) => {
@@ -146,13 +150,13 @@ function PostAd() {
 
   useEffect(() => {}, [uploadedFiles]);
 
-  useEffect(() => {
-    setUserInfo(localStorage.getItem("token"));
-    setFormRes((prevFormRes) => ({
-      ...prevFormRes,
-      idLandlord: userInfo.id,
-    }));
-  }, []);
+  // useEffect(() => {
+  //   // setUserInfo(localStorage.getItem("token"));
+  //   // setFormRes((prevFormRes) => ({
+  //   //   ...prevFormRes,
+  //   //   idLandlord: userInfo.id,
+  //   // }));
+  // }, []);
 
   return (
     <>
