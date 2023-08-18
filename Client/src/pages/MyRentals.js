@@ -18,13 +18,10 @@ function MyRentals() {
 
   useEffect(() => {
     // Call the fetchData function inside the useEffect
-    console.log("call 1");
+
     if (user && user.id) {
-      console.log("call 2");
       getRentals(user.id);
-      console.log("call 3");
     }
-    console.log("call 4");
   }, [user]);
 
   useEffect(() => {}, [dataHouse]);

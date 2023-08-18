@@ -74,9 +74,9 @@ function PostAd() {
     const fbUrls = [];
     const uploadPromises = uploadedFiles.map(async (img) => {
       const imageRef = ref(storage, folder + "/" + img.name);
-      console.log("UPLOADING BYTES");
+
       await uploadBytes(imageRef, img);
-      console.log("GETTING URLS");
+
       const imageUrl = await getDownloadURL(imageRef);
 
       fbUrls.push(imageUrl);

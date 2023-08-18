@@ -9,7 +9,7 @@ export default function Context({ children }) {
 
     if (token) {
       const user = decodeToken(token);
-      console.log(user);
+
       setUser(user);
       if (!user) {
         localStorage.removeItem("token");

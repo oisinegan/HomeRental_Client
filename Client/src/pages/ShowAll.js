@@ -110,8 +110,6 @@ function ShowAll() {
         fetch("https://homerentalserver.onrender.com/getAllHomes")
           .then((res) => res.json())
           .then((dataHouse) => {
-            console.log("Recived");
-            console.log(dataHouse);
             setDataHouse(dataHouse);
             setHouseNo(": " + Object.keys(dataHouse).length);
           });
