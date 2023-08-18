@@ -81,7 +81,7 @@ function Property() {
                       <img
                         src={images}
                         alt="Rental property images"
-                        className="w-full max-w-full h-[30em]"
+                        className="w-full max-w-full h-[30em] showAll-custom4:h-[15em]"
                       />
                     </div>
                   ))}
