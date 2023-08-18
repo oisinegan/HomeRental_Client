@@ -1,25 +1,31 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Nav from "../components/nav";
 import Footer from "../components/footer";
+import { myContext } from "../pages/Context";
 
 function MyRentals() {
+  const user = useContext(myContext);
   const [dataHouse, setDataHouse] = useState({});
   const [userInfo, setUserInfo] = useState();
-  useEffect(() => {
-    setUserInfo(localStorage.getItem("token"));
-    // fetch("https://homerentalserver.onrender.com/getUser")
-    //   .then((res) => res.json())
-    //   .then((userInfo) => {
-    //     setUserInfo(userInfo);
-    //   });
-  }, []);
+  // useEffect(() => {
+  //   setUserInfo(localStorage.getItem("token"));
+  //   // fetch("https://homerentalserver.onrender.com/getUser")
+  //   //   .then((res) => res.json())
+  //   //   .then((userInfo) => {
+  //   //     setUserInfo(userInfo);
+  //   //   });
+  // }, []);
 
   useEffect(() => {
     // Call the fetchData function inside the useEffect
-    if (userInfo && userInfo.id) {
-      getRentals(userInfo.id);
+    console.log("call 1");
+    if (user && user.id) {
+      console.log("call 2");
+      getRentals(user.id);
+      console.log("call 3");
     }
-  }, [userInfo]);
+    console.log("call 4");
+  }, [user]);
 
   useEffect(() => {}, [dataHouse]);
 

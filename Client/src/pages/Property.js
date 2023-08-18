@@ -245,7 +245,7 @@ function Property() {
                   <span class="block sm:inline">
                     We have emailed the landlord using the information provided!
                   </span>
-                  <a href="http://localhost:3000/Rentals">
+                  <a href="https://home-rental-client.vercel.app/Rentals">
                     <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
                       <svg
                         class="fill-current h-6 w-6 text-green-500"
